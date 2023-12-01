@@ -1793,7 +1793,7 @@ function system_update_10100(&$sandbox = NULL) {
   // Update cache tables.
   $cache_tables = $schema->findTables('cache_%');
   $cache_tables = array_filter($cache_tables, function ($cache_tables) {
-    return str_starts_with($cache_tables, 'cache_');
+    return str_starts_with($cache_tables, 'cache_') && $cache_tables != 'cache_phonetik_index';
   });
   if ($connection->databaseType() != 'sqlite') {
     foreach (array_keys($cache_tables) as $table) {
