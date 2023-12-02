@@ -44,6 +44,7 @@ class JsOptimizer implements AssetOptimizerInterface {
     elseif (isset($js_asset['attributes']['charset'])) {
       $data = Unicode::convertToUtf8($data, $js_asset['attributes']['charset']);
     }
+    return $data;
     // Remove comments, whitespace, and optional braces.
     try {
       $ast = Peast::latest($data)->parse();
